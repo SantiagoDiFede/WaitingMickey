@@ -16,6 +16,23 @@
 | O3 · Construire une sélection | Coordonnées parallèles + brushing | T6, T7 |
 | O4 · Repérer l'atypique | Strip plot des écarts | T8 |
 
+## Interactions : vues coordonnées (*overview + detail*)
+
+Les 4 vues partagent **une seule sélection : le genre**. L'interface suit un parcours en trois niveaux :
+
+1. **Vue globale** : toutes les vues montrent l'ensemble du catalogue.
+2. **Sélection d'un genre**, de trois façons : barre de recherche, clic sur un point de la carte (O1) ou clic sur une colonne de la heatmap (O2). Les 4 vues se mettent alors à jour **en même temps**.
+3. **Détail d'un morceau** : un clic sur un morceau (tableau O3 ou point O4) ouvre une **fiche**. Elle donne la popularité, le tempo, la durée et l'écart au genre, ainsi qu'un **radar qui compare le morceau à la moyenne de son genre**.
+
+| Vue | Vue globale | Genre sélectionné |
+|---|---|---|
+| O1 Carte | 114 genres, couleur = popularité | genre mis en avant et relié à ses 5 plus proches voisins, les autres estompés ; radar du profil du genre comparé au catalogue |
+| O2 Heatmap | 30 genres aux liens les plus forts | colonne du genre encadrée (et ajoutée si elle n'y était pas) ; phrase qui résume ce qui fait monter ou baisser la popularité dans ce genre |
+| O3 Coord. parallèles | échantillon de 8 000 morceaux ; tableau calculé sur tout le catalogue | **tous** les morceaux du genre ; le tableau des morceaux filtrés se met à jour à chaque déplacement de filtre |
+| O4 Strip plot | 12 genres les plus hétérogènes | strip plot du genre seul, ses morceaux les plus atypiques et la caractéristique qui les rend atypiques |
+
+Le bouton **« Vue globale »** annule la sélection. Les filtres posés en O3 sont conservés quand on change de genre.
+
 ---
 
 ## O1 · Carte des genres (ACP + biplot)
@@ -69,13 +86,13 @@
 3. Le **brushing** fonctionne ainsi : l'utilisateur sélectionne une plage sur un axe, les filtres se combinent (ET logique), et seules les lignes qui satisfont tous les filtres restent colorées.
 4. La couleur encode la popularité.
 
-**Tâches** : T6 (*filtrer* selon des plages de tempo, d'énergie et de valence) et T7 (*consulter* le détail en lisant les valeurs des morceaux retenus sur les autres axes).
+**Tâches** : T6 (*filtrer* selon des plages de tempo, d'énergie et de valence) et T7 (*consulter* le détail : le tableau des morceaux retenus, puis la fiche d'un morceau au clic).
 
 **Pourquoi cette technique** : c'est la technique de référence pour filtrer de façon interactive selon plusieurs critères numériques. Elle reproduit le geste d'un curateur (« 120–130 BPM, très énergique… ») tout en gardant la vue d'ensemble.
 
 **Résultat** : avec le préréglage « soirée dansante » (120–130 BPM, énergie > 0,8, danceability > 0,7), **1 850 morceaux** correspondent sur l'ensemble du catalogue. Le plus populaire est *One Kiss* de Calvin Harris et Dua Lipa (89/100).
 
-**Limite** : au-delà de quelques milliers de lignes le graphique devient surchargé, d'où l'échantillon. Le nom des morceaux n'apparaît pas directement sur le graphique.
+**Limite** : au-delà de quelques milliers de lignes le graphique devient surchargé, d'où l'échantillon de 8 000 morceaux en vue globale (le tableau, lui, porte sur tout le catalogue).
 
 ---
 
