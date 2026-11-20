@@ -4,6 +4,8 @@ Projet de l'UE **Visualisation des données** · DI FEDE Santiago, SELMANE Ilyan
 
 Quatre visualisations interactives pour comprendre ce qui distingue les genres musicaux et ce qui rend un morceau populaire.
 
+Pour regarder comment les données ont été transformé et de quels manières on a réalisé les visualisations, on doit regarder le jupyter notebook `projet_spotify_visualisation.ipynb` où cela est expliqué partie par partie.
+
 ## Contenu
 
 | Fichier | Rôle |
